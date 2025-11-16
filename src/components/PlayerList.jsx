@@ -87,16 +87,16 @@ const PlayerList = ({ players }) => {
                           Deselect
                         </button>
                       ) : (
-                        <button
-                          className="btn btn-sm btn-primary"
+                      <button
+                        className="btn btn-sm btn-primary"
                           disabled={!validation.canAdd}
                           title={!validation.canAdd ? validation.reason : 'Select player'}
-                          onClick={() => {
+                        onClick={() => {
                             if (validation.canAdd) addPlayer(player);
-                          }}
-                        >
+                        }}
+                      >
                           Select
-                        </button>
+                      </button>
                       )}
                     </td>
                   </tr>

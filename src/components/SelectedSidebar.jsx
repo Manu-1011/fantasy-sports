@@ -72,24 +72,24 @@ const SelectedSidebar = () => {
               {selectedTeam.map(player => {
                 const isSelected = isPlayerSelected(player.id);
                 return (
-                  <div key={player.id} className="d-flex justify-content-between align-items-center mb-2 p-2 bg-light rounded">
-                    <div className="flex-grow-1">
-                      <div className="fw-bold small">{player.name}</div>
-                      <div className="text-muted" style={{ fontSize: '0.75rem' }}>
-                        {player.role} • {getPlayerTeam(player)} • {getPlayerCredits(player)} Cr
-                      </div>
+                <div key={player.id} className="d-flex justify-content-between align-items-center mb-2 p-2 bg-light rounded">
+                  <div className="flex-grow-1">
+                    <div className="fw-bold small">{player.name}</div>
+                    <div className="text-muted" style={{ fontSize: '0.75rem' }}>
+                      {player.role} • {getPlayerTeam(player)} • {getPlayerCredits(player)} Cr
                     </div>
-                    {isSelected && (
-                      <button
-                        className="btn btn-outline-danger btn-sm ms-2"
-                        aria-label="Remove"
-                        title="Remove from selected"
-                        onClick={() => removePlayer(player.id)}
-                      >
-                        <MdClose />
-                      </button>
-                    )}
                   </div>
+                    {isSelected && (
+                  <button
+                    className="btn btn-outline-danger btn-sm ms-2"
+                    aria-label="Remove"
+                    title="Remove from selected"
+                    onClick={() => removePlayer(player.id)}
+                  >
+                        <MdClose />
+                  </button>
+                    )}
+                </div>
                 );
               })}
             </div>

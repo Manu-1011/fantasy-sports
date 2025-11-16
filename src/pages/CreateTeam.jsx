@@ -87,7 +87,7 @@ const CreateTeam = () => {
   };
 
   const isMatchLocked = () => {
-    return false;
+      return false;
   };
 
   const handlePreviewTeam = () => {
@@ -182,7 +182,7 @@ const CreateTeam = () => {
           <div className="small mt-2 d-flex flex-column align-items-center gap-1">
             <div>
               <strong>Time Left: </strong>
-              <CountdownTimer matchDate={match.match_date} />
+                <CountdownTimer matchDate={match.match_date} />
             </div>
           </div>
         )}
@@ -211,22 +211,22 @@ const CreateTeam = () => {
               gap: '1rem'
             }}
           >
-            <button
+                  <button
               className="btn btn-info btn-lg"
-              onClick={handlePreviewTeam}
+                    onClick={handlePreviewTeam}
               disabled={selectedTeam.length !== 11}
               title={selectedTeam.length !== 11 ? 'Please select 11 players first' : 'Preview your team'}
-            >
-              Preview Team
-            </button>
-            <button
+                  >
+                    Preview Team
+                  </button>
+                  <button
               className="btn btn-primary btn-lg"
-              onClick={handlePreviewTeam}
+                    onClick={handlePreviewTeam}
               disabled={selectedTeam.length !== 11}
               title={selectedTeam.length !== 11 ? 'Please select 11 players first' : 'Save your team'}
-            >
-              Save Team
-            </button>
+                  >
+                    Save Team
+                  </button>
           </div>
         </>
       ) : (

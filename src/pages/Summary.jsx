@@ -160,12 +160,12 @@ const Summary = () => {
 
   // ====== show all teams list =====
   if (selectedTeamId === null) {
-    return (
-      <div className="container-fluid mt-4 px-3 px-md-4">
-        <h1>My Teams</h1>
-        <div className="small text-muted mb-3">
-          Sport: {selectedSport ? selectedSport.charAt(0).toUpperCase() + selectedSport.slice(1) : 'Cricket'}
-        </div>
+  return (
+    <div className="container-fluid mt-4 px-3 px-md-4">
+      <h1>My Teams</h1>
+      <div className="small text-muted mb-3">
+        Sport: {selectedSport ? selectedSport.charAt(0).toUpperCase() + selectedSport.slice(1) : 'Cricket'}
+      </div>
 
         <div className="table-responsive">
           <table className="table table-striped align-middle">
@@ -186,7 +186,7 @@ const Summary = () => {
                 const captainPlayer = players.find(p => p.id === team.captainId);
                 const vcPlayer = players.find(p => p.id === team.viceCaptainId);
                 
-                return (
+        return (
                   <tr key={team.id}>
                     <td><strong>{team.name}</strong></td>
                     <td>
@@ -194,7 +194,7 @@ const Summary = () => {
                         <div className="d-flex align-items-center gap-1">
                           {matchInfo.t1_image && <img src={matchInfo.t1_image} alt={matchInfo.t1_name} className="team-logo-small" />}
                           <span>{matchInfo.t1_short_name || matchInfo.t1_name}</span>
-                          <span className="text-muted">VS</span>
+              <span className="text-muted">VS</span>
                           {matchInfo.t2_image && <img src={matchInfo.t2_image} alt={matchInfo.t2_name} className="team-logo-small" />}
                           <span>{matchInfo.t2_short_name || matchInfo.t2_name}</span>
                         </div>
@@ -240,7 +240,7 @@ const Summary = () => {
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h1>Edit Team: {selectedTeam.name}</h1>
         <button className="btn btn-secondary" onClick={() => setSelectedTeamId(null)}>Back to List</button>
-      </div>
+            </div>
 
       {matchInfo && (
         <div className="mb-3 p-3 bg-light rounded">
@@ -262,7 +262,7 @@ const Summary = () => {
             </div>
           </div>
         </div>
-      )}
+            )}
 
       <TeamEditCard team={selectedTeam} />
     </div>

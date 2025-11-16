@@ -78,8 +78,8 @@ const PromotionalRibbon = () => {
                   <div className="ribbon-card-subtitle">{promo.subMessage}</div>
                   <div className="ribbon-card-text">{promo.message}</div>
                 </div>
-              </div>
-            ))}
+            </div>
+          ))}
           </div>
         </div>
       </div>
