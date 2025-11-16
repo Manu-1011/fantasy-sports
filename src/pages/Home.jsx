@@ -250,22 +250,32 @@ function Home() {
                   const hasTeam = joinedIds.has(Number(match.id));
                   return (
                     <div key={match.id} className="list-group-item match-card">
-                      <div className="d-flex align-items-center gap-2">
-                        {match.t1_image && <img src={match.t1_image} alt={match.t1_name} className="team-logo-small" />}
-                        <strong>{match.t1_name || match.t1_short_name}</strong>
-                        <span className="text-muted">VS</span>
-                        {match.t2_image && <img src={match.t2_image} alt={match.t2_name} className="team-logo-small" />}
-                        <strong>{match.t2_name || match.t2_short_name}</strong>
-                        {hasTeam && (
-                          <span className="badge bg-success ms-2">You have teams</span>
-                        )}
-                        <span className="ms-auto text-muted small">Date: {formatDate(match.match_date)}, Time: {formatTime(match.match_date)}</span>
-                      </div>
-                      {hasTeam && (
-                        <div className="mt-2">
-                          <Link to={`/summary`} className="btn btn-outline-primary btn-sm">View My Teams</Link>
+                      <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
+                        <div className="flex-grow-1">
+                          <div className="d-flex align-items-center gap-3 mb-2">
+                            {match.t1_image && <img src={match.t1_image} alt={match.t1_name} className="team-logo-small" />}
+                            <strong>{match.t1_name || match.t1_short_name}</strong>
+                            <span className="text-muted">VS</span>
+                            {match.t2_image && <img src={match.t2_image} alt={match.t2_name} className="team-logo-small" />}
+                            <strong>{match.t2_name || match.t2_short_name}</strong>
+                            {hasTeam && (
+                              <span className="badge bg-success ms-2">You have teams</span>
+                            )}
+                          </div>
+                          <div className="d-flex flex-wrap gap-3 text-muted small">
+                            <span>Date: {formatDate(match.match_date)}</span>
+                            <span>Time: {formatTime(match.match_date)}</span>
+                            {match.match_type && <span>Match Type: {match.match_type}</span>}
+                            {match.event_name && <span>Event: {match.event_name}</span>}
+                          </div>
                         </div>
-                      )}
+                        <div className="d-flex flex-column gap-2 align-items-md-end">
+                          <Link to={`/create-team?match=${match.id}&sport=${selectedSport}`} className="btn btn-primary btn-sm">Make Team</Link>
+                          {hasTeam && (
+                            <Link to={`/summary`} className="btn btn-outline-primary btn-sm">View My Teams</Link>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   );
                 })}

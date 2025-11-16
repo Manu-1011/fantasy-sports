@@ -87,21 +87,10 @@ const CreateTeam = () => {
   };
 
   const isMatchLocked = () => {
-    if (!match || !match.match_date) return false;
-    try {
-      const now = Date.now();
-      const matchTime = new Date(match.match_date).getTime();
-      return now >= matchTime;
-    } catch {
-      return false;
-    }
+    return false;
   };
 
   const handlePreviewTeam = () => {
-    if (isMatchLocked()) {
-      alert('Team creation is locked. The match has started.');
-      return;
-    }
     const validation = validateTeam(selectedTeam);
     if (validation.valid) {
       setShowCaptainSelector(true);
@@ -111,10 +100,6 @@ const CreateTeam = () => {
   };
 
   const handleSaveTeam = async () => {
-    if (isMatchLocked()) {
-      alert('Cannot save. The match has already started.');
-      return;
-    }
     const validation = validateTeam(selectedTeam);
     if (!validation.valid) {
       alert(validation.reason);
@@ -197,11 +182,7 @@ const CreateTeam = () => {
           <div className="small mt-2 d-flex flex-column align-items-center gap-1">
             <div>
               <strong>Time Left: </strong>
-              {isMatchLocked() ? (
-                <span className="text-danger">Match Started</span>
-              ) : (
-                <CountdownTimer matchDate={match.match_date} />
-              )}
+              <CountdownTimer matchDate={match.match_date} />
             </div>
           </div>
         )}
@@ -233,7 +214,7 @@ const CreateTeam = () => {
             <button
               className="btn btn-info btn-lg"
               onClick={handlePreviewTeam}
-              disabled={isMatchLocked() || selectedTeam.length !== 11}
+              disabled={selectedTeam.length !== 11}
               title={selectedTeam.length !== 11 ? 'Please select 11 players first' : 'Preview your team'}
             >
               Preview Team
@@ -241,7 +222,7 @@ const CreateTeam = () => {
             <button
               className="btn btn-primary btn-lg"
               onClick={handlePreviewTeam}
-              disabled={isMatchLocked() || selectedTeam.length !== 11}
+              disabled={selectedTeam.length !== 11}
               title={selectedTeam.length !== 11 ? 'Please select 11 players first' : 'Save your team'}
             >
               Save Team
@@ -273,7 +254,7 @@ const CreateTeam = () => {
             <button
               className="btn btn-primary btn-lg"
               onClick={handleSaveTeam}
-              disabled={isMatchLocked() || !captain || !viceCaptain || !teamName || teamName.trim().length === 0}
+              disabled={!captain || !viceCaptain || !teamName || teamName.trim().length === 0}
               title={!captain || !viceCaptain ? 'Please select both Captain and Vice-Captain' : (!teamName || teamName.trim().length === 0 ? 'Please enter a team name' : 'Save your team')}
             >
               Save Team
